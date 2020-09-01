@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "remote_configs",
+  "info": {
+    "name": "Remote Config"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "uid"
+    },
+    "type": {
+      "type": "string"
+    },
+    "data": {
+      "type": "json"
+    }
+  }
+}

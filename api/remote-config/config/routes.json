@@ -1,0 +1,60 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/remote-configs/heroes",
+      "handler": "remote-config.getAllHeroes",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/remote-configs",
+      "handler": "remote-config.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/remote-configs/count",
+      "handler": "remote-config.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/remote-configs/:id",
+      "handler": "remote-config.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/remote-configs",
+      "handler": "remote-config.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/remote-configs/:id",
+      "handler": "remote-config.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/remote-configs/:id",
+      "handler": "remote-config.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
