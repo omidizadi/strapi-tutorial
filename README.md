@@ -5,14 +5,6 @@ Create a simple Remote Config for an RPG game
 
 ![](https://cdn-images-1.medium.com/max/2880/0*RgPdt93K5OjOIRY0)
 
-* [*Part 1 — *Setup Strapi](https://medium.com/@Omidizadi/setup-a-simple-server-side-application-for-your-game-using-strapi-js-part-1-6833308422dc)
-
-* *Part 2 — *Create Remote Config
-
-* [*Part 3 — Calling API from Unity](https://medium.com/@Omidizadi/create-a-simple-web-application-for-your-game-using-strapi-js-part-3-853a49091479)*
-
-📎 [source code to this tutorial at GitHub](https://github.com/omidizadi/strapi-tutorial)
-
 In the [previous part](https://medium.com/@Omidizadi/setup-a-simple-server-side-application-for-your-game-using-strapi-js-part-1-6833308422dc), we successfully installed and ran a Strapi application. Now it is time to build the API. But first, let’s take a close look at what a game server like this can provide us:
 
 * It can authenticate users.
@@ -180,7 +172,27 @@ go inside the *controllers *folder and open *remote-config.js *with a code edito
 
 we should put all of our methods inside the *modules.exports. *So it will be exposed to Strapi. Now we want a method to return only the desired fields of every hero object. Here is the code:
 
-<iframe src="https://medium.com/media/a29b91abe1ee7ad5fc4cdbc2e8fb1cb2" frameborder=0></iframe>
+```c#
+"use strict";
+
+module.exports = {
+  getAllHeroes: async (ctx) => {
+    var heroes = await strapi.query("remote-config").find({ type: "hero" });
+
+    var modifiedList = [];
+
+    heroes.forEach((hero) => {
+      modifiedList.push({
+        name: hero.name,
+        type: hero.type,
+        data: hero.data,
+      });
+    });
+
+    return modifiedList;
+  },
+};
+```
 
 I defined the method *getAllHeroes *and received all objects of type *hero*, kept them in an array called *heroes,* and then extracted only 3 main fields from them and added the modified objects to a new array. And finally, I returned the* *modified array. There are of course better ways to do this but I’m not a fantastic JS programmer so I’m satisfied with this one:)
 
